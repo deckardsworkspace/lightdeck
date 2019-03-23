@@ -5,16 +5,14 @@
 #include <LdValue.h>
 
 LdValue::LdValue() {
-    _dec_pin = PIN_BTN_MINUS;
-    _inc_pin = PIN_BTN_PLUS;
     _choice = 0;
     _adj_len = ADJ_LEN;
 
     // Init buttons
     _deb_dec = Bounce();
     _deb_inc = Bounce();
-    _deb_dec.attach(_dec_pin, INPUT_PULLUP);
-    _deb_inc.attach(_inc_pin, INPUT_PULLUP);
+    _deb_dec.attach(PIN_BTN_MINUS, INPUT_PULLUP);
+    _deb_inc.attach(PIN_BTN_PLUS, INPUT_PULLUP);
     _deb_dec.interval(DEBOUNCE_INTERVAL);
     _deb_inc.interval(DEBOUNCE_INTERVAL);
 

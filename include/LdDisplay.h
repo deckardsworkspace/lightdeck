@@ -12,7 +12,6 @@ public:
     void welcome();
 
 private:
-    int _RS, _EN, _D4, _D5, _D6, _D7;
     LiquidCrystal *_LCD;
     String _selectedAdj, _val;
 };

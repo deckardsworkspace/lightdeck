@@ -7,14 +7,8 @@ LdDisplay::LdDisplay() {
     _selectedAdj = "";
     _val = "";
 
-    _RS = PIN_LCD_RS;
-    _EN = PIN_LCD_EN;
-    _D4 = PIN_LCD_D4;
-    _D5 = PIN_LCD_D5;
-    _D6 = PIN_LCD_D6;
-    _D7 = PIN_LCD_D7;
-
-    _LCD = new LiquidCrystal(_RS, _EN, _D4, _D5, _D6, _D7);
+    _LCD = new LiquidCrystal(PIN_LCD_RS, PIN_LCD_EN,
+        PIN_LCD_D4, PIN_LCD_D5, PIN_LCD_D6, PIN_LCD_D7);
     _LCD -> begin(16, 2);
     _LCD -> noAutoscroll();
 };

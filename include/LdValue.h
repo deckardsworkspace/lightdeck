@@ -13,9 +13,6 @@ public:
     int update(int choice);
 
 private:
-    // Pins
-    int _dec_pin, _inc_pin;
-
     // Debouncers
     Bounce _deb_dec, _deb_inc;
 
