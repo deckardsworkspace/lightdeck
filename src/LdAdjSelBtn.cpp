@@ -1,6 +1,6 @@
 #include "Arduino.h"
 #include <Bounce2.h>
-#include <LdAdj.h>
+#include <LdAdjustments.h>
 #include <LdAdjSelBtn.h>
 #include <LdConst.h>
 

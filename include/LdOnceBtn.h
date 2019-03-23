@@ -1,13 +1,13 @@
-#ifndef LD_UNDO_BTN
-#define LD_UNDO_BTN
+#ifndef LD_ONCE_BTN
+#define LD_ONCE_BTN
 
 #include "Arduino.h"
 #include "LdBtn.h"
 #include "LdConst.h"
 
-class LdUndoBtn : public LdBtn {
+class LdOnceBtn : public LdBtn {
 public:
-    LdUndoBtn();
+    LdOnceBtn(int pin);
     bool monitor();
 };
 

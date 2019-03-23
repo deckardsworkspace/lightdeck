@@ -1,5 +1,5 @@
 #include "Arduino.h"
-#include <LdAdj.h>
+#include <LdAdjustments.h>
 
 String ADJ[] = {
     // Must not exceed 16 characters

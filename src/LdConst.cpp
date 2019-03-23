@@ -1,8 +1,12 @@
 #include <LdConst.h>
 
-// milliseconds
+// Duration for debouncing button inputs
 const unsigned long DEBOUNCE_INTERVAL = 50;
+
+// Time to wait before activating a button hold event
 const unsigned long HOLD_DELAY = 500;
+
+// Interval between repeats from a held button
 const unsigned long HOLD_INTERVAL = 50;
 
 // LCD pins

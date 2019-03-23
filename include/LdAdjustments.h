@@ -1,5 +1,5 @@
-#ifndef LD_ADJ_H
-#define LD_ADJ_H
+#ifndef LD_ADJUSTMENTS_H
+#define LD_ADJUSTMENTS_H
 
 #include "Arduino.h"
 

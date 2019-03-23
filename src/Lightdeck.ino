@@ -7,29 +7,28 @@
  */
 
 #include <MIDI.h>
-#include <LdAdj.h>
+#include <LdAdjustments.h>
 #include <LdAdjSelBtn.h>
 #include <LdConst.h>
 #include <LdDisplay.h>
-#include <LdResetBtn.h>
-#include <LdUndoBtn.h>
+#include <LdOnceBtn.h>
 #include <LdValue.h>
 
+/**
+ * Objects
+ */
 LdDisplay disp;        ///< LCD
-LdAdjSelBtn adjBtn;    ///< Function selection button
-LdResetBtn rstBtn;     ///< Reset adjustments button
-LdUndoBtn undoBtn;     ///< Undo adjustment button
 LdValue value;         ///< Adjustment buttons/encoders
-
-const long SERIAL_BAUD = 115200;
+LdAdjSelBtn adjBtn;    ///< Adjustment selection button
+LdOnceBtn rstBtn(PIN_BTN_RESET);     ///< Reset adjustments button
+LdOnceBtn undoBtn(PIN_BTN_UNDO);     ///< Undo adjustment button
 
 struct MIDISettings : public midi::DefaultSettings {
-    static const long BaudRate = SERIAL_BAUD;
+    static const long BaudRate = 115200;
 };
 MIDI_CREATE_CUSTOM_INSTANCE(HardwareSerial, Serial, MIDI, MIDISettings);
 
 void setup() {
-    Serial.begin(SERIAL_BAUD);
     MIDI.begin(MIDI_CHANNEL_OMNI);
     MIDI.setHandleControlChange(onControlChange);
     MIDI.setHandleSystemReset(onSystemReset);
@@ -39,24 +38,16 @@ void setup() {
 int lastChoice, lastVal;
 
 void loop() {
-    int _choice = adjBtn.getChoice(),
-        _value = value.update(_choice);
+    MIDI.read();
+    int choice = adjBtn.getChoice(),
+        val = value.update(choice);
 
-    if (_choice != lastChoice || _value != lastVal) {
-        lastChoice = _choice;
-        lastVal = _value;
-        sendCtrlChange(lastChoice, lastVal);
-    }
-
-    MIDI.read(MIDI_CHANNEL_OMNI);
+    sendCtrlChange(choice, val);
     disp.updateAdj(adjBtn.monitor());
-    disp.updateValue(String(lastVal));
+    disp.updateValue(String(val));
 
-    if (rstBtn.monitor())
-        sendNote(MID_CHAN_RESET);
-
-    if (undoBtn.monitor())
-        sendNote(MID_CHAN_UNDO);
+    if (rstBtn.monitor()) sendNote(MID_CHAN_RESET);
+    if (undoBtn.monitor()) sendNote(MID_CHAN_UNDO);
 }
 
 /***** Begin MIDI logic *****/
