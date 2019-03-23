@@ -35,8 +35,6 @@ void setup() {
     disp.welcome();
 }
 
-int lastChoice, lastVal;
-
 void loop() {
     MIDI.read();
     int choice = adjBtn.getChoice(),
