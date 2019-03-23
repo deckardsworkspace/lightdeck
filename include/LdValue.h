@@ -1,7 +1,7 @@
 #ifndef LD_VALUE_H
 #define LD_VALUE_H
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include <Bounce2.h>
 
 class LdValue {

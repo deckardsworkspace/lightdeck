@@ -1,7 +1,7 @@
 #ifndef LD_ADJUSTMENTS_H
 #define LD_ADJUSTMENTS_H
 
-#include "Arduino.h"
+#include <Arduino.h>
 
 // Possible adjustments
 extern String ADJ[];

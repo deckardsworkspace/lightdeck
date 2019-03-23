@@ -1,7 +1,7 @@
 #ifndef LD_DISPLAY_H
 #define LD_DISPLAY_H
 
-#include "Arduino.h"
+#include <Arduino.h>
 #include <LiquidCrystal.h>
 
 class LdDisplay {
