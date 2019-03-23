@@ -31,8 +31,8 @@ MIDI_CREATE_CUSTOM_INSTANCE(HardwareSerial, Serial, MIDI, MIDISettings);
 void setup() {
     Serial.begin(SERIAL_BAUD);
     MIDI.begin(MIDI_CHANNEL_OMNI);
-    MIDI.setHandleControlChange(onReceiveCC);
-    MIDI.setHandleSystemReset(onReset);
+    MIDI.setHandleControlChange(onControlChange);
+    MIDI.setHandleSystemReset(onSystemReset);
     disp.welcome();
 }
 
@@ -68,25 +68,24 @@ void sendMsg(int choice, int val) {
         _val = val;
         MIDI.sendControlChange(_ctrl, _val, MID_CHAN_DEFAULT);
     }
-};
+}
 
 void sendNote(int chan) {
     long start = millis();
     MIDI.sendNoteOn(MID_NOTE_DEFAULT, MID_VEL_DEFAULT, chan);
     if (millis() - start > 1000)
         MIDI.sendNoteOff(MID_NOTE_DEFAULT, MID_VEL_DEFAULT, chan);
-};
+}
 
-void onReceiveCC(byte chan, byte num, byte val) {
+void onControlChange(byte chan, byte num, byte val) {
     int choice = chan - 1;
 
     if (adjBtn.getChoice() != choice || value.get(choice) != val) {
         value.set(choice, val);
         adjBtn.setChoice(choice);
     }
-};
+}
 
-void onReset() {
-    for (int i = 0; i < ADJ_LEN; i++)
-        value.reset(i);
-};
+void onSystemReset() {
+    value.reset();
+}

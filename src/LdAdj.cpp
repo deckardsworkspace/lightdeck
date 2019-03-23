@@ -17,4 +17,4 @@ String ADJ[] = {
     "Saturation"
 };
 
-int ADJ_LEN = sizeof(ADJ) / sizeof(ADJ[0]);
+unsigned int ADJ_LEN = sizeof(ADJ) / sizeof(ADJ[0]);

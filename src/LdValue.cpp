@@ -24,8 +24,9 @@ LdValue::LdValue() {
         _pos[i] = 64;
 };
 
-void LdValue::reset(int i) {
-    _pos[i] = 64;
+void LdValue::reset() {
+    for (unsigned int i = 0; i < sizeof(_pos); i++)
+        _pos[i] = 64;
 };
 
 int LdValue::get(int i) {

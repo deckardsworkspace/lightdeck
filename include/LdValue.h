@@ -7,7 +7,7 @@
 class LdValue {
 public:
     LdValue();
-    void reset(int i);
+    void reset();
     int get(int i);
     void set(int i, int v);
     int update(int choice);

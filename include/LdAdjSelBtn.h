@@ -15,7 +15,7 @@ public:
 private:
     // Selection
     String *_adj;
-    int _adj_len, _choice;
+    unsigned int _adj_len, _choice;
 };
 
 #endif

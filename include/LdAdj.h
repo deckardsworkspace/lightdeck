@@ -5,6 +5,6 @@
 
 // Possible adjustments
 extern String ADJ[];
-extern int ADJ_LEN;
+extern unsigned int ADJ_LEN;
 
 #endif
