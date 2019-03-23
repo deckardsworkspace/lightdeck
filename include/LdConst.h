@@ -1,27 +1,35 @@
 #ifndef LD_CONST_H
 #define LD_CONST_H
 
-extern const unsigned long DEBOUNCE_INTERVAL;
-extern const unsigned long HOLD_DELAY;
-extern const unsigned long HOLD_INTERVAL;
+// Duration for debouncing button inputs
+#define DEBOUNCE_INTERVAL 50
 
-extern const int PIN_LCD_RS;
-extern const int PIN_LCD_EN;
-extern const int PIN_LCD_D4;
-extern const int PIN_LCD_D5;
-extern const int PIN_LCD_D6;
-extern const int PIN_LCD_D7;
+// Time to wait before activating a button hold event
+#define HOLD_DELAY 500
 
-extern const int PIN_BTN_UNDO;
-extern const int PIN_BTN_RESET;
-extern const int PIN_BTN_MINUS;
-extern const int PIN_BTN_PLUS;
-extern const int PIN_BTN_MODE;
+// Interval between repeats from a held button
+#define HOLD_INTERVAL 50
 
-extern const int MID_VEL_DEFAULT;
-extern const int MID_NOTE_DEFAULT;
-extern const int MID_CHAN_RESET;
-extern const int MID_CHAN_UNDO;
-extern const int MID_CHAN_DEFAULT;
+// LCD pins
+#define PIN_LCD_D7 2
+#define PIN_LCD_D6 3
+#define PIN_LCD_D5 4
+#define PIN_LCD_D4 5
+#define PIN_LCD_EN 11
+#define PIN_LCD_RS 12
+
+// Button pins
+#define PIN_BTN_RESET 6
+#define PIN_BTN_UNDO 7
+#define PIN_BTN_MODE 8
+#define PIN_BTN_PLUS 9
+#define PIN_BTN_MINUS 10
+
+// MIDI constants
+#define MID_VEL_DEFAULT 64
+#define MID_NOTE_DEFAULT 127
+#define MID_CHAN_RESET 1
+#define MID_CHAN_UNDO 2
+#define MID_CHAN_DEFAULT 3
 
 #endif
