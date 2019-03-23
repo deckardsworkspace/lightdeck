@@ -43,6 +43,11 @@ void LdDisplay::displayTime() {
     _LCD -> print(seconds);
 };
 
+void LdDisplay::update2nd(String string) {
+    _LCD -> setCursor(0, 1);
+    _LCD -> print(string);
+}
+
 void LdDisplay::update(String selectedAdj) {
     if (_selectedAdj != selectedAdj) {
         // Clear top row
@@ -60,9 +65,14 @@ void LdDisplay::update(String selectedAdj) {
 
 void LdDisplay::updateValue(String val) {
     if (_val != val) {
-        // Clear bottom row
-        _LCD -> setCursor(0, 1);
-        _LCD -> print("                ");
+        // Clear previous digits
+        if (val < _val) {
+            int oldLen = _val.length();
+            _LCD -> setCursor(16 - oldLen, 1);
+            for (int i = 0; i < oldLen; i++) {
+                _LCD -> print(" ");
+            }
+        }
 
         // Display new value, right-aligned
         _LCD -> setCursor(16 - val.length(), 1);

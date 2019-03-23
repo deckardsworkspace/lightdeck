@@ -28,6 +28,10 @@ void LdValue::reset(int i) {
     _pos[i] = 64;
 };
 
+int LdValue::get(int i) {
+    return _pos[i];
+}
+
 void LdValue::set(int i, int v) {
     _pos[i] = v;
 };

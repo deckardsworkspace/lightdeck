@@ -32,6 +32,10 @@ String LdAdjSelBtn::monitor() {
     return _adj[_choice];
 };
 
+void LdAdjSelBtn::setChoice(int choice) {
+    _choice = choice;
+}
+
 int LdAdjSelBtn::getChoice() {
     return _choice;
 };

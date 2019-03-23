@@ -30,5 +30,6 @@ extern const int MID_VEL_DEFAULT;
 extern const int MID_NOTE_DEFAULT;
 extern const int MID_CHAN_RESET;
 extern const int MID_CHAN_UNDO;
+extern const int MID_CHAN_DEFAULT;
 
 #endif

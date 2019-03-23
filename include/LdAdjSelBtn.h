@@ -10,6 +10,7 @@ public:
     LdAdjSelBtn();
     String monitor();
     int getChoice();
+    void setChoice(int choice);
 
 private:
     // Selection

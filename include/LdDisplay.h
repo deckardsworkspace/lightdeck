@@ -9,6 +9,7 @@ public:
     LdDisplay();
     void displayTime();
     void update(String selectedAdj);
+    void update2nd(String string);
     void updateValue(String val);
     void welcome();
 
