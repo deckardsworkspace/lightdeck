@@ -19,36 +19,7 @@ LdDisplay::LdDisplay() {
     _LCD -> noAutoscroll();
 };
 
-void LdDisplay::displayTime() {
-    int secs = millis() / 1000;
-
-    // Print on row 2 col 5
-    _LCD -> setCursor(4, 1);
-
-    // Show minutes
-    int sec = secs % 60;
-    _LCD -> print(secs / 60);
-
-    // Show colon every other second
-    if (sec % 2 == 0)
-        _LCD -> print(":");
-    else
-        _LCD -> print(" ");
-
-    // Show seconds
-    String seconds = String(sec);
-    if (sec < 10) {
-        seconds = "0" + seconds;
-    }
-    _LCD -> print(seconds);
-};
-
-void LdDisplay::update2nd(String string) {
-    _LCD -> setCursor(0, 1);
-    _LCD -> print(string);
-}
-
-void LdDisplay::update(String selectedAdj) {
+void LdDisplay::updateAdj(String selectedAdj) {
     if (_selectedAdj != selectedAdj) {
         // Clear top row
         _LCD -> setCursor(0, 0);

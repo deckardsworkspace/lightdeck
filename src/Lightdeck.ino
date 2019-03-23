@@ -45,11 +45,11 @@ void loop() {
     if (_choice != lastChoice || _value != lastVal) {
         lastChoice = _choice;
         lastVal = _value;
-        sendMsg(lastChoice, lastVal);
+        sendCtrlChange(lastChoice, lastVal);
     }
 
     MIDI.read(MIDI_CHANNEL_OMNI);
-    disp.update(adjBtn.monitor());
+    disp.updateAdj(adjBtn.monitor());
     disp.updateValue(String(lastVal));
 
     if (rstBtn.monitor())
@@ -62,7 +62,7 @@ void loop() {
 /***** Begin MIDI logic *****/
 int _ctrl = 1, _val = 64;
 
-void sendMsg(int choice, int val) {
+void sendCtrlChange(int choice, int val) {
     if (!(_val == val && _ctrl == (choice + 1))) {
         _ctrl = choice + 1;
         _val = val;
