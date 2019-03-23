@@ -3,7 +3,6 @@
 
 #include "Arduino.h"
 #include "LdBtn.h"
-#include "LdConst.h"
 
 class LdAdjSelBtn : public LdBtn {
 public:
