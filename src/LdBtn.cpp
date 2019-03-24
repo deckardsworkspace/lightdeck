@@ -1,15 +1,15 @@
 #include <Arduino.h>
 #include <Bounce2.h>
 #include <LdConst.h>
-#include <LdOnceBtn.h>
+#include <LdBtn.h>
 
-LdOnceBtn::LdOnceBtn(int pin) {
+LdBtn::LdBtn(int pin) {
     _debouncer = Bounce();
     _debouncer.attach(pin, INPUT_PULLUP);
     _debouncer.interval(DEBOUNCE_INTERVAL);
 };
 
-bool LdOnceBtn::monitor() {
+bool LdBtn::isPressed() {
     _debouncer.update();
     return _debouncer.fell();
 };

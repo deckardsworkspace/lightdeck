@@ -1,9 +1,8 @@
 #include <Arduino.h>
 #include <MIDI.h>
-#include <LdAdjustments.h>
-#include <LdMidi.h>
+#include <LdAdj.h>
 #include <LdConst.h>
-#include <LdValue.h>
+#include <LdMidi.h>
 
 struct MIDISettings : public midi::DefaultSettings {
     static const long BaudRate = SERIAL_BAUD_RATE;

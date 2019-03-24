@@ -1,6 +1,8 @@
 #ifndef LD_CONST_H
 #define LD_CONST_H
 
+#include <Arduino.h>
+
 // Baud rate for Serial and MIDI
 #define SERIAL_BAUD_RATE 115200
 

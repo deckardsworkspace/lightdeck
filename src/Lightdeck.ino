@@ -6,23 +6,24 @@
  * @copyright GPLv3 (see README.md and LICENSE)
  */
 
-#include <LdAdjustments.h>
-#include <LdAdjSelBtn.h>
+#include <LdAdj.h>
 #include <LdConst.h>
 #include <LdDisplay.h>
 #include <LdMidi.h>
-#include <LdOnceBtn.h>
-#include <LdValue.h>
+#include <LdBtn.h>
+#include <LdHoldBtn.h>
 
 /**
  * Objects
  */
-LdMidi mid;            ///< MIDI
-LdDisplay disp;        ///< LCD
-LdValue value;         ///< Adjustment buttons/encoders
-LdAdjSelBtn adjBtn;    ///< Adjustment selection button
-LdOnceBtn rstBtn(PIN_BTN_RESET);     ///< Reset adjustments button
-LdOnceBtn undoBtn(PIN_BTN_UNDO);     ///< Undo adjustment button
+LdMidi mid;                      ///< MIDI
+LdDisplay disp;                  ///< LCD
+LdAdj value;                   ///< Adjustment values
+LdBtn adjBtn(PIN_BTN_MODE);      ///< Adjustment selection button
+LdBtn rstBtn(PIN_BTN_RESET);     ///< Reset adjustments button
+LdBtn undoBtn(PIN_BTN_UNDO);     ///< Undo adjustment button
+LdHoldBtn decBtn(PIN_BTN_MINUS); ///< Adjustment decrement button
+LdHoldBtn incBtn(PIN_BTN_PLUS);  ///< Adjustment increment button
 
 void setup() {
     disp.welcome();
@@ -31,16 +32,26 @@ void setup() {
 
 void loop() {
     mid.read();
-    int num = adjBtn.getChoice(),
-        val = value.update(num);
+    disp.updateAdj(value.getAdj());
+    disp.updateValue(String(value.get(value.getChoice())));
 
-    mid.sendControlChange(++num, val);
-    disp.updateAdj(adjBtn.monitor());
-    disp.updateValue(String(val));
-
-    if (rstBtn.monitor()) {
+    // Buttons
+    decBtn.monitor(onDecBtnPressed);
+    incBtn.monitor(onIncBtnPressed);
+    if (adjBtn.isPressed()) value.nextAdj();
+    if (undoBtn.isPressed()) mid.sendNote(MID_CHAN_UNDO);
+    if (rstBtn.isPressed()) {
         value.reset();
         mid.sendNote(MID_CHAN_RESET);
     }
-    if (undoBtn.monitor()) mid.sendNote(MID_CHAN_UNDO);
+}
+
+void onDecBtnPressed() {
+    int num = value.getChoice();
+    mid.sendControlChange(num, value.update(num, false));
+}
+
+void onIncBtnPressed() {
+    int num = value.getChoice();
+    mid.sendControlChange(num, value.update(num, true));
 }

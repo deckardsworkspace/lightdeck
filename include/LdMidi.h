@@ -2,7 +2,7 @@
 #define LD_MIDI_H
 
 #include <Arduino.h>
-#include <LdValue.h>
+#include <LdAdj.h>
 
 class LdMidi {
 public:

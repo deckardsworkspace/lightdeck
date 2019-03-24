@@ -9,7 +9,8 @@ protected:
     Bounce _debouncer;
 
 public:
-    void monitor();
+    LdBtn(int);
+    bool isPressed();
 };
 
 #endif
