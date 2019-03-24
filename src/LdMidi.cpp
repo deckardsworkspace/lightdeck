@@ -50,7 +50,7 @@ void LdMidi::sendControlChange(int num, int val) {
     if (!(_lastNum == num && _lastVal == val)) {
         _lastNum = num;
         _lastVal = val;
-        MIDI.sendControlChange(num, val, MID_CHAN_DEFAULT);
+        MIDI.sendControlChange(num, val, MID_CHAN_ADJ);
     }
 };
 

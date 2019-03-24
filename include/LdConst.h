@@ -36,8 +36,7 @@
 // MIDI constants
 #define MID_VEL_DEFAULT 64
 #define MID_NOTE_DEFAULT 127
-#define MID_CHAN_RESET 1
-#define MID_CHAN_UNDO 2
-#define MID_CHAN_DEFAULT 3
+#define MID_CHAN_UNDO 1
+#define MID_CHAN_ADJ 2
 
 #endif
