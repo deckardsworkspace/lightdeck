@@ -30,14 +30,9 @@ void LdDisplay::updateAdj(String selectedAdj) {
 
 void LdDisplay::updateValue(String val) {
     if (_val != val) {
-        // Clear previous digits
-        if (val < _val) {
-            int oldLen = _val.length();
-            _LCD -> setCursor(16 - oldLen, 1);
-            for (int i = 0; i < oldLen; i++) {
-                _LCD -> print(" ");
-            }
-        }
+        // Clear buttom row
+        _LCD -> setCursor(0, 1);
+        _LCD -> print("                ");
 
         // Display new value, right-aligned
         _LCD -> setCursor(16 - val.length(), 1);
