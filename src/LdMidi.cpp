@@ -24,15 +24,13 @@ void LdMidi::begin(int *values) {
 }
 
 void LdMidi::onControlChange(byte chan, byte num, byte val) {
-    int choice = chan - 1;
-
-    if (_values[choice] != val) {
+    if (_values[chan] != val) {
         if (val < 0)
-            _values[choice] = 0;
+            _values[chan] = 0;
         else if (val > 127)
-            _values[choice] = 127;
+            _values[chan] = 127;
         else
-            _values[choice] = val;
+            _values[chan] = val;
     }
 };
 
