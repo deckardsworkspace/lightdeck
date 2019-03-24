@@ -8,8 +8,7 @@ class LdValue {
 public:
     LdValue();
     void reset();
-    int get(int i);
-    void set(int i, int v);
+    int *getArray();
     int update(int choice);
 
 private:

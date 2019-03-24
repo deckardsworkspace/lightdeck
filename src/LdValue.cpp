@@ -27,12 +27,8 @@ void LdValue::reset() {
         _pos[i] = 64;
 };
 
-int LdValue::get(int i) {
-    return _pos[i];
-}
-
-void LdValue::set(int i, int v) {
-    _pos[i] = v;
+int *LdValue::getArray() {
+    return _pos;
 };
 
 int LdValue::update(int choice) {
