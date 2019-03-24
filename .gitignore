@@ -4,3 +4,4 @@ Archive
 .pioenvs/
 .piolibdeps/
 **/*.ino.cpp
+**/*.sublime-workspace
