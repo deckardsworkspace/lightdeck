@@ -14,6 +14,8 @@ public:
 private:
     LiquidCrystal *_LCD;
     String _selectedAdj, _val;
+
+    void dispCentered(String, int);
 };
 
 #endif
