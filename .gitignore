@@ -3,3 +3,4 @@ ignore
 Archive
 .pioenvs/
 .piolibdeps/
+**/*.ino.cpp
