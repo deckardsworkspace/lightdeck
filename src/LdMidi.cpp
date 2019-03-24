@@ -46,9 +46,6 @@ void LdMidi::read() {
             case midi::ControlChange:
                 onControlChange(MIDI.getChannel(), d1, d2);
                 break;
-            default:
-                Serial.println("[mid] msg t=" + String(type)
-                    + ", d1=" + String(d1) + ", d2=" + String(d2));
         }
     }
 };
@@ -58,7 +55,6 @@ void LdMidi::sendControlChange(int num, int val) {
         _lastNum = num;
         _lastVal = val;
         MIDI.sendControlChange(num, val, MID_CHAN_DEFAULT);
-        delay(DEBOUNCE_INTERVAL);
     }
 };
 
