@@ -20,8 +20,7 @@ void LdMidi::begin(int *values) {
 
     // Create MIDI instance
     MIDI.begin(MIDI_CHANNEL_OMNI);
-    Serial.begin(SERIAL_BAUD_RATE);
-}
+};
 
 void LdMidi::onControlChange(byte chan, byte num, byte val) {
     if (_values[chan] != val) {

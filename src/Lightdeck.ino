@@ -16,9 +16,13 @@
 /**
  * Objects
  */
-LdMidi mid;                      ///< MIDI
+LdAdj value;                     ///< Adjustment values
 LdDisplay disp;                  ///< LCD
-LdAdj value;                   ///< Adjustment values
+LdMidi mid;                      ///< MIDI
+
+/**
+ * Buttons
+ */
 LdBtn adjBtn(PIN_BTN_MODE);      ///< Adjustment selection button
 LdBtn rstBtn(PIN_BTN_RESET);     ///< Reset adjustments button
 LdBtn undoBtn(PIN_BTN_UNDO);     ///< Undo adjustment button
