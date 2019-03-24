@@ -7,8 +7,8 @@
 class LdDisplay {
 public:
     LdDisplay();
-    void updateAdj(String selectedAdj);
-    void updateValue(String val);
+    void updateAdj(String);
+    void updateValue(String);
     void welcome();
 
 private:
