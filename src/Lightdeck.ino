@@ -34,7 +34,7 @@ void loop() {
     int num = adjBtn.getChoice(),
         val = value.update(num);
 
-    mid.sendControlChange(num, val);
+    mid.sendControlChange(++num, val);
     disp.updateAdj(adjBtn.monitor());
     disp.updateValue(String(val));
 

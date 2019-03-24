@@ -45,7 +45,7 @@ void LdMidi::read() {
         switch (type) {
             case midi::ControlChange:
                 onControlChange(MIDI.getChannel(), d1, d2);
-                //break;
+                break;
             default:
                 Serial.println("[mid] msg t=" + String(type)
                     + ", d1=" + String(d1) + ", d2=" + String(d2));
@@ -58,12 +58,12 @@ void LdMidi::sendControlChange(int num, int val) {
         _lastNum = num;
         _lastVal = val;
         MIDI.sendControlChange(num, val, MID_CHAN_DEFAULT);
+        delay(DEBOUNCE_INTERVAL);
     }
 };
 
 void LdMidi::sendNote(int chan) {
-    long start = millis();
     MIDI.sendNoteOn(MID_NOTE_DEFAULT, MID_VEL_DEFAULT, chan);
-    if (millis() - start > 1000)
-        MIDI.sendNoteOff(MID_NOTE_DEFAULT, MID_VEL_DEFAULT, chan);
+    delay(NOTE_OFF_DELAY);
+    MIDI.sendNoteOff(MID_NOTE_DEFAULT, MID_VEL_DEFAULT, chan);
 };

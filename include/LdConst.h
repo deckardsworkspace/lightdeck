@@ -13,6 +13,9 @@
 // Interval between repeats from a held button
 #define HOLD_INTERVAL 50
 
+// Time to wait before sending a NoteOff
+#define NOTE_OFF_DELAY 100
+
 // LCD pins
 #define PIN_LCD_D7 2
 #define PIN_LCD_D6 3

@@ -37,5 +37,5 @@ void LdAdjSelBtn::setChoice(int choice) {
 }
 
 int LdAdjSelBtn::getChoice() {
-    return _choice + 1;
+    return _choice;
 };
