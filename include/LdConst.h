@@ -27,9 +27,9 @@
 #define PIN_LCD_RS 12
 
 // Button pins
-#define PIN_BTN_RESET 6
-#define PIN_BTN_UNDO 7
-#define PIN_BTN_MODE 8
+#define PIN_BTN_UNDO 6
+#define PIN_BTN_ADJUP 7
+#define PIN_BTN_ADJDN 8
 #define PIN_BTN_PLUS 9
 #define PIN_BTN_MINUS 10
 

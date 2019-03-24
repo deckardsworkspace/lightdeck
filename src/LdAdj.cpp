@@ -43,6 +43,12 @@ int *LdAdj::getArray() {
     return _values;
 };
 
+void LdAdj::prevAdj() {
+    _choice--;
+    if (_choice <= 0)
+        _choice = ADJ_LEN - 1;
+};
+
 void LdAdj::nextAdj() {
     _choice++;
     if (_choice >= ADJ_LEN)

@@ -16,6 +16,7 @@ public:
     int *getArray();
     int getChoice();
     String getAdj();
+    void prevAdj();
     void nextAdj();
     void setAdj(int);
     int update(int, bool);

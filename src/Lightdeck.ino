@@ -23,8 +23,8 @@ LdMidi mid;                      ///< MIDI
 /**
  * Buttons
  */
-LdBtn adjBtn(PIN_BTN_MODE);      ///< Adjustment selection button
-LdBtn rstBtn(PIN_BTN_RESET);     ///< Reset adjustments button
+LdBtn nextAdjBtn(PIN_BTN_ADJUP); ///< Adjustment selection button 1
+LdBtn prevAdjBtn(PIN_BTN_ADJDN); ///< Adjustment selection button 2
 LdBtn undoBtn(PIN_BTN_UNDO);     ///< Undo adjustment button
 LdHoldBtn decBtn(PIN_BTN_MINUS); ///< Adjustment decrement button
 LdHoldBtn incBtn(PIN_BTN_PLUS);  ///< Adjustment increment button
@@ -42,12 +42,9 @@ void loop() {
     // Buttons
     decBtn.pressed(onDecBtnPressed);
     incBtn.pressed(onIncBtnPressed);
-    if (adjBtn.pressed()) value.nextAdj();
+    if (prevAdjBtn.pressed()) value.prevAdj();
+    if (nextAdjBtn.pressed()) value.nextAdj();
     if (undoBtn.pressed()) mid.sendNote(MID_CHAN_UNDO);
-    if (rstBtn.pressed()) {
-        value.reset();
-        mid.sendNote(MID_CHAN_RESET);
-    }
 }
 
 void onDecBtnPressed() {
