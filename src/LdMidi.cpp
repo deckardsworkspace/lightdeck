@@ -23,13 +23,13 @@ void LdMidi::begin(int *values) {
 };
 
 void LdMidi::onControlChange(byte chan, byte num, byte val) {
-    if (_values[chan] != val) {
-        if (val < 0)
-            _values[chan] = 0;
-        else if (val > 127)
-            _values[chan] = 127;
+    if (_values[num] != val) {
+        if (val <= 0)
+            _values[num] = 0;
+        else if (val >= 127)
+            _values[num] = 127;
         else
-            _values[chan] = val;
+            _values[num] = val;
     }
 };
 
