@@ -10,7 +10,7 @@ protected:
 
 public:
     LdBtn(int);
-    bool isPressed();
+    bool pressed();
 };
 
 #endif

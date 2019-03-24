@@ -40,11 +40,11 @@ void loop() {
     disp.updateValue(String(value.get(value.getChoice())));
 
     // Buttons
-    decBtn.monitor(onDecBtnPressed);
-    incBtn.monitor(onIncBtnPressed);
-    if (adjBtn.isPressed()) value.nextAdj();
-    if (undoBtn.isPressed()) mid.sendNote(MID_CHAN_UNDO);
-    if (rstBtn.isPressed()) {
+    decBtn.pressed(onDecBtnPressed);
+    incBtn.pressed(onIncBtnPressed);
+    if (adjBtn.pressed()) value.nextAdj();
+    if (undoBtn.pressed()) mid.sendNote(MID_CHAN_UNDO);
+    if (rstBtn.pressed()) {
         value.reset();
         mid.sendNote(MID_CHAN_RESET);
     }

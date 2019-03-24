@@ -7,7 +7,7 @@
 class LdHoldBtn : public LdBtn {
 public:
     LdHoldBtn(int pin) : LdBtn(pin) {};
-    void monitor(void(*f)(void));
+    void pressed(void(*f)(void));
 };
 
 #endif

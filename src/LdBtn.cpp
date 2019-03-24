@@ -9,7 +9,7 @@ LdBtn::LdBtn(int pin) {
     _debouncer.interval(DEBOUNCE_INTERVAL);
 };
 
-bool LdBtn::isPressed() {
+bool LdBtn::pressed() {
     _debouncer.update();
     return _debouncer.fell();
 };

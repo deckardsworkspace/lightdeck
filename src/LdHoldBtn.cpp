@@ -3,7 +3,7 @@
 #include <LdConst.h>
 #include <LdHoldBtn.h>
 
-void LdHoldBtn::monitor(void(*f)(void)) {
+void LdHoldBtn::pressed(void(*f)(void)) {
     _debouncer.update();
     bool isHeld = _debouncer.read() == HIGH && _debouncer.duration() > HOLD_DELAY;
     if (_debouncer.fell() || isHeld) {
