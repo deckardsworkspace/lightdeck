@@ -31,10 +31,10 @@ void setup() {
 
 void loop() {
     mid.read();
-    int choice = adjBtn.getChoice(),
-        val = value.update(choice);
+    int num = adjBtn.getChoice(),
+        val = value.update(num);
 
-    mid.sendControlChange(choice, val);
+    mid.sendControlChange(num, val);
     disp.updateAdj(adjBtn.monitor());
     disp.updateValue(String(val));
 

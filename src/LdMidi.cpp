@@ -6,15 +6,15 @@
 #include <LdValue.h>
 
 struct MIDISettings : public midi::DefaultSettings {
-    static const long BaudRate = 115200;
+    static const long BaudRate = SERIAL_BAUD_RATE;
 };
 MIDI_CREATE_CUSTOM_INSTANCE(HardwareSerial, Serial, MIDI, MIDISettings);
 
-int *LdMidi::_values = new int[ADJ_LEN];
-
 LdMidi::LdMidi() {
-    _ctrl = 1;
-    _val = 64;
+    _lastNum = 1;
+    _lastVal = 64;
+    _values = new int[ADJ_LEN];
+    Serial.begin(SERIAL_BAUD_RATE);
 };
 
 void LdMidi::begin(int *values) {
@@ -22,25 +22,42 @@ void LdMidi::begin(int *values) {
 
     // Create MIDI instance
     MIDI.begin(MIDI_CHANNEL_OMNI);
-    MIDI.setHandleControlChange(onControlChange);
 }
 
 void LdMidi::onControlChange(byte chan, byte num, byte val) {
     int choice = chan - 1;
 
-    if (_values[choice] != val)
-        _values[choice] = val;
+    if (_values[choice] != val) {
+        if (val < 0)
+            _values[choice] = 0;
+        else if (val > 127)
+            _values[choice] = 127;
+        else
+            _values[choice] = val;
+    }
 };
 
 void LdMidi::read() {
-    MIDI.read();
+    if (MIDI.read()) {
+        byte type = MIDI.getType();
+        int d1 = MIDI.getData1(), d2 = MIDI.getData2();
+
+        switch (type) {
+            case midi::ControlChange:
+                onControlChange(MIDI.getChannel(), d1, d2);
+                //break;
+            default:
+                Serial.println("[mid] msg t=" + String(type)
+                    + ", d1=" + String(d1) + ", d2=" + String(d2));
+        }
+    }
 };
 
-void LdMidi::sendControlChange(int choice, int val) {
-    if (!(_val == val && _ctrl == (choice + 1))) {
-        _ctrl = choice + 1;
-        _val = val;
-        MIDI.sendControlChange(_ctrl, _val, MID_CHAN_DEFAULT);
+void LdMidi::sendControlChange(int num, int val) {
+    if (!(_lastNum == num && _lastVal == val)) {
+        _lastNum = num;
+        _lastVal = val;
+        MIDI.sendControlChange(num, val, MID_CHAN_DEFAULT);
     }
 };
 

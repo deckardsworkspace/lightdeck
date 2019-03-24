@@ -1,6 +1,9 @@
 #ifndef LD_CONST_H
 #define LD_CONST_H
 
+// Baud rate for Serial and MIDI
+#define SERIAL_BAUD_RATE 57600
+
 // Duration for debouncing button inputs
 #define DEBOUNCE_INTERVAL 50
 

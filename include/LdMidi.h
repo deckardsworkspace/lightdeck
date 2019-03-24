@@ -8,14 +8,13 @@ class LdMidi {
 public:
     LdMidi();
     void begin(int*);
-    static void onControlChange(byte, byte, byte);
     void read();
     void sendControlChange(int, int);
     void sendNote(int);
 
 private:
-    int _ctrl, _val;
-    static int *_values;
+    int _lastNum, _lastVal, *_values;
+    void onControlChange(byte, byte, byte);
 };
 
 #endif
