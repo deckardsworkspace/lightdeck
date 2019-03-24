@@ -14,7 +14,6 @@ LdMidi::LdMidi() {
     _lastNum = 1;
     _lastVal = 64;
     _values = new int[ADJ_LEN];
-    Serial.begin(SERIAL_BAUD_RATE);
 };
 
 void LdMidi::begin(int *values) {
@@ -22,6 +21,7 @@ void LdMidi::begin(int *values) {
 
     // Create MIDI instance
     MIDI.begin(MIDI_CHANNEL_OMNI);
+    Serial.begin(SERIAL_BAUD_RATE);
 }
 
 void LdMidi::onControlChange(byte chan, byte num, byte val) {
