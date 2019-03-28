@@ -12,6 +12,8 @@ class LdAdj {
 public:
     LdAdj();
     int getNum();
+    String getNextStr();
+    String getPrevStr();
     String getString();
     void prevAdj();
     void nextAdj();

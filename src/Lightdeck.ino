@@ -35,7 +35,7 @@ void setup() {
 }
 
 void loop() {
-    disp.updateAdj(adj.getString());
+    disp.update(adj.getString(), adj.getPrevStr(), adj.getNextStr());
 
     // Buttons
     decBtn.pressed(onDecBtnPressed);

@@ -29,44 +29,34 @@ LdDisplay::LdDisplay() {
     _LCD -> createChar(1, rightArrow);
 };
 
-void LdDisplay::dispCentered(String str, int row) {
-    // Display centered
-    int length = str.length();
-    int offset = length / 2;
-    if (length % 2 == 0) offset--;
-    _LCD -> setCursor(7 - offset, row);
-    _LCD -> print(str);
-};
-
-void LdDisplay::updateAdj(String selectedAdj) {
-    if (_selectedAdj != selectedAdj) {
-        // Clear top row and print arrows
-        _LCD -> setCursor(0, 0);
-        _LCD -> write((byte)0);
-        _LCD -> print("              ");
-        _LCD -> write((byte)1);
+void LdDisplay::update(String currAdj, String prevAdj, String nextAdj) {
+    if (_selectedAdj != currAdj) {
+        // Clear display
+        _LCD -> clear();
 
         // Display new adjustment, centered
-        dispCentered(selectedAdj, 0);
+        int length = currAdj.length();
+        int offset = length / 2;
+        if (length % 2 == 0) offset--;
+        _LCD -> setCursor(7 - offset, 0);
+        _LCD -> print(currAdj);
+
+        // Display arrows on bottom row
+        _LCD -> setCursor(0, 1);
+        _LCD -> write((byte)0);
+        _LCD -> setCursor(15, 1);
+        _LCD -> write((byte)1);
+
+        // Display prev and next adjustments
+        _LCD -> setCursor(1, 1);
+        _LCD -> print(prevAdj);
+        _LCD -> setCursor(11, 1);
+        _LCD -> print(nextAdj);
 
         // Store new adjustment
-        _selectedAdj = selectedAdj;
+        _selectedAdj = currAdj;
     }
 };
-
-void LdDisplay::updateValue(String val) {
-    if (_val != val) {
-        // Clear buttom row
-        _LCD -> setCursor(0, 1);
-        _LCD -> print("                ");
-
-        // Display new value, centered
-        dispCentered(val, 1);
-
-        // Store new value
-        _val = val;
-    }
-}
 
 void LdDisplay::welcome() {
     // Show welcome message

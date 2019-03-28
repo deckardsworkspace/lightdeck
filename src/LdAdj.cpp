@@ -31,6 +31,18 @@ String LdAdj::getString() {
     return ADJ[_choice];
 };
 
+String LdAdj::getNextStr() {
+    if (_choice == ADJ_LEN - 1)
+        return ADJ[0].substring(0, 4);
+    return ADJ[_choice + 1].substring(0, 4);
+};
+
+String LdAdj::getPrevStr() {
+    if (_choice == 0)
+        return ADJ[ADJ_LEN - 1].substring(0, 4);
+    return ADJ[_choice - 1].substring(0, 4);
+};
+
 int LdAdj::getNum() {
     return _choice;
 };
