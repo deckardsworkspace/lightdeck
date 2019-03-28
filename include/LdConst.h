@@ -29,9 +29,9 @@
 // Button pins
 #define PIN_BTN_UNDO 6
 #define PIN_BTN_ADJUP 7
-#define PIN_BTN_ADJDN 8
-#define PIN_BTN_PLUS 9
-#define PIN_BTN_MINUS 10
+#define PIN_BTN_PLUS 8
+#define PIN_BTN_MINUS 9
+#define PIN_BTN_ADJDN 10
 
 // MIDI constants
 #define MID_NUM_ALLOFF 123
