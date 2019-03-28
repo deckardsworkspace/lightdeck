@@ -19,10 +19,7 @@ String ADJ[] = {
 int ADJ_LEN = sizeof(ADJ) / sizeof(ADJ[0]);
 
 LdAdj::LdAdj() {
-    // Init pos array to middle of MIDI range
-    _values = new int[ADJ_LEN];
-    for (int i = 0; i < ADJ_LEN; i++)
-        _values[i] = 64;
+    _choice = 0;
 };
 
 String LdAdj::getString() {

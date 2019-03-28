@@ -19,7 +19,7 @@ public:
     void nextAdj();
 
 private:
-    int _adj_len, _choice, *_values;
+    int _choice;
 };
 
 #endif
