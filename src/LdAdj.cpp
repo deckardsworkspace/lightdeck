@@ -4,8 +4,6 @@
 
 String ADJ[] = {
     // Must not exceed 14 characters
-    "Temperature",
-    "Tint",
     "Exposure",
     "Contrast",
     "Highlights",
