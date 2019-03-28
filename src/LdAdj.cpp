@@ -47,7 +47,7 @@ int LdAdj::getNum() {
 
 void LdAdj::prevAdj() {
     _choice--;
-    if (_choice <= 0)
+    if (_choice < 0)
         _choice = ADJ_LEN - 1;
 };
 
