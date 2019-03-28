@@ -11,15 +11,10 @@ extern int ADJ_LEN;
 class LdAdj {
 public:
     LdAdj();
-    void reset();
-    int get(int);
-    int *getArray();
-    int getChoice();
-    String getAdj();
+    int getNum();
+    String getString();
     void prevAdj();
     void nextAdj();
-    void setAdj(int);
-    int update(int, bool);
 
 private:
     int _adj_len, _choice, *_values;

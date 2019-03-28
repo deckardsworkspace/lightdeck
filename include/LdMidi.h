@@ -2,19 +2,14 @@
 #define LD_MIDI_H
 
 #include <Arduino.h>
-#include <LdAdj.h>
 
 class LdMidi {
 public:
     LdMidi();
-    void begin(int*);
+    void begin();
     void read();
-    void sendControlChange(int, int);
+    void sendAdjustment(int, int);
     void sendNote(int);
-
-private:
-    int _lastNum, _lastVal, *_values;
-    void onControlChange(byte, byte, byte);
 };
 
 #endif

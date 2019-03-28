@@ -34,6 +34,7 @@
 #define PIN_BTN_MINUS 10
 
 // MIDI constants
+#define MID_NUM_ALLOFF 123
 #define MID_VEL_DEFAULT 64
 #define MID_NOTE_DEFAULT 127
 #define MID_CHAN_UNDO 1

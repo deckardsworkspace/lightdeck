@@ -10,48 +10,16 @@ struct MIDISettings : public midi::DefaultSettings {
 MIDI_CREATE_CUSTOM_INSTANCE(HardwareSerial, Serial, MIDI, MIDISettings);
 
 LdMidi::LdMidi() {
-    _lastNum = 1;
-    _lastVal = 64;
-    _values = new int[ADJ_LEN];
+    // stub
 };
 
-void LdMidi::begin(int *values) {
-    _values = values;
-
+void LdMidi::begin() {
     // Create MIDI instance
     MIDI.begin(MIDI_CHANNEL_OMNI);
 };
 
-void LdMidi::onControlChange(byte chan, byte num, byte val) {
-    if (_values[num] != val) {
-        if (val <= 0)
-            _values[num] = 0;
-        else if (val >= 127)
-            _values[num] = 127;
-        else
-            _values[num] = val;
-    }
-};
-
-void LdMidi::read() {
-    if (MIDI.read()) {
-        byte type = MIDI.getType();
-        int d1 = MIDI.getData1(), d2 = MIDI.getData2();
-
-        switch (type) {
-            case midi::ControlChange:
-                onControlChange(MIDI.getChannel(), d1, d2);
-                break;
-        }
-    }
-};
-
-void LdMidi::sendControlChange(int num, int val) {
-    if (!(_lastNum == num && _lastVal == val)) {
-        _lastNum = num;
-        _lastVal = val;
-        MIDI.sendControlChange(num, val, MID_CHAN_ADJ);
-    }
+void LdMidi::sendAdjustment(int num, int val) {
+    MIDI.sendControlChange(num, val, MID_CHAN_ADJ);
 };
 
 void LdMidi::sendNote(int chan) {

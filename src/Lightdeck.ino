@@ -16,7 +16,7 @@
 /**
  * Objects
  */
-LdAdj value;                     ///< Adjustment values
+LdAdj adj;                     ///< Adjustment values
 LdDisplay disp;                  ///< LCD
 LdMidi mid;                      ///< MIDI
 
@@ -31,28 +31,26 @@ LdHoldBtn incBtn(PIN_BTN_PLUS);  ///< Adjustment increment button
 
 void setup() {
     disp.welcome();
-    mid.begin(value.getArray());
+    mid.begin();
 }
 
 void loop() {
-    mid.read();
-    disp.updateAdj(value.getAdj());
-    disp.updateValue(String(value.get(value.getChoice())));
+    disp.updateAdj(adj.getString());
 
     // Buttons
     decBtn.pressed(onDecBtnPressed);
     incBtn.pressed(onIncBtnPressed);
-    if (prevAdjBtn.pressed()) value.prevAdj();
-    if (nextAdjBtn.pressed()) value.nextAdj();
+    if (prevAdjBtn.pressed()) adj.prevAdj();
+    if (nextAdjBtn.pressed()) adj.nextAdj();
     if (undoBtn.pressed()) mid.sendNote(MID_CHAN_UNDO);
 }
 
 void onDecBtnPressed() {
-    int num = value.getChoice();
-    mid.sendControlChange(num, value.update(num, false));
+    int num = adj.getNum();
+    mid.sendAdjustment(num, 127);
 }
 
 void onIncBtnPressed() {
-    int num = value.getChoice();
-    mid.sendControlChange(num, value.update(num, true));
+    int num = adj.getNum();
+    mid.sendAdjustment(num, 1);
 }
