@@ -2,7 +2,6 @@
 #define LD_ADJ_H
 
 #include <Arduino.h>
-#include <Bounce2.h>
 
 // Possible adjustments
 extern String ADJ[];
