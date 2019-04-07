@@ -8,7 +8,6 @@
 
 #include <LdAdj.h>
 #include <LdConst.h>
-#include <LdDisplay.h>
 #include <LdMidi.h>
 #include <LdBtn.h>
 
@@ -16,7 +15,6 @@
  * Objects
  */
 LdAdj adj;                     ///< Adjustment values
-LdDisplay disp;                  ///< LCD
 LdMidi mid;                      ///< MIDI
 
 /**
@@ -27,13 +25,10 @@ LdBtn prevAdjBtn(PIN_BTN_ADJDN); ///< Adjustment selection button 2
 LdBtn undoBtn(PIN_BTN_UNDO);     ///< Undo adjustment button
 
 void setup() {
-    disp.welcome();
     mid.begin();
 }
 
 void loop() {
-    disp.update(adj.getString(), adj.getPrevStr(), adj.getNextStr());
-
     // Buttons
     if (prevAdjBtn.pressed()) adj.prevAdj();
     if (nextAdjBtn.pressed()) adj.nextAdj();
