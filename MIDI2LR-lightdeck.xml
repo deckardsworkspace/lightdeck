@@ -1,15 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <settings>
-  <setting channel="2" controller="7" command_string="Dehaze"/>
-  <setting channel="2" controller="6" command_string="Clarity"/>
-  <setting channel="2" controller="5" command_string="Blacks"/>
-  <setting channel="2" controller="4" command_string="Whites"/>
-  <setting channel="2" controller="3" command_string="Shadows"/>
-  <setting channel="2" controller="2" command_string="Highlights"/>
-  <setting channel="2" controller="1" command_string="Contrast"/>
-  <setting channel="2" controller="0" command_string="Exposure"/>
-  <setting channel="2" controller="9" command_string="Saturation"/>
   <setting channel="1" note="127" command_string="Undo"/>
+  <setting channel="10" note="127" command_string="ResetVibrance"/>
+  <setting channel="11" note="127" command_string="ResetSaturation"/>
+  <setting channel="2" note="127" command_string="ResetExposure"/>
+  <setting channel="3" note="127" command_string="ResetContrast"/>
+  <setting channel="4" note="127" command_string="ResetHighlights"/>
+  <setting channel="5" note="127" command_string="ResetShadows"/>
+  <setting channel="6" note="127" command_string="ResetWhites"/>
+  <setting channel="7" note="127" command_string="ResetBlacks"/>
+  <setting channel="8" note="127" command_string="ResetClarity"/>
+  <setting channel="9" note="127" command_string="ResetDehaze"/>
+  <setting channel="2" controller="0" command_string="Exposure"/>
+  <setting channel="2" controller="1" command_string="Contrast"/>
+  <setting channel="2" controller="2" command_string="Highlights"/>
+  <setting channel="2" controller="3" command_string="Shadows"/>
+  <setting channel="2" controller="4" command_string="Whites"/>
+  <setting channel="2" controller="5" command_string="Blacks"/>
+  <setting channel="2" controller="6" command_string="Clarity"/>
+  <setting channel="2" controller="7" command_string="Dehaze"/>
   <setting channel="2" controller="8" command_string="Vibrance"/>
+  <setting channel="2" controller="9" command_string="Saturation"/>
 </settings>
