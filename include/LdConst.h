@@ -18,20 +18,15 @@
 // Time to wait before sending a NoteOff
 #define NOTE_OFF_DELAY 100
 
-// LCD pins
-#define PIN_LCD_D7 2
-#define PIN_LCD_D6 3
-#define PIN_LCD_D5 4
-#define PIN_LCD_D4 5
-#define PIN_LCD_EN 11
-#define PIN_LCD_RS 12
+// Encoder pins
+#define PIN_ENC_SW 8
+#define PIN_ENC_DT 9
+#define PIN_ENC_CLK 10
 
 // Button pins
-#define PIN_BTN_UNDO 6
-#define PIN_BTN_ADJUP 7
-#define PIN_BTN_PLUS 8
-#define PIN_BTN_MINUS 9
-#define PIN_BTN_ADJDN 10
+#define PIN_BTN_ADJDN 11
+#define PIN_BTN_ADJUP 12
+#define PIN_BTN_UNDO 13
 
 // MIDI constants
 #define MID_VEL_DEFAULT 64
