@@ -19,14 +19,14 @@
 #define NOTE_OFF_DELAY 100
 
 // Encoder pins
-#define PIN_ENC_SW 8
-#define PIN_ENC_DT 9
-#define PIN_ENC_CLK 10
+#define PIN_ENC_DT 2
+#define PIN_ENC_CLK 3
+#define PIN_ENC_SW 4
 
 // Button pins
-#define PIN_BTN_ADJDN 11
-#define PIN_BTN_ADJUP 12
-#define PIN_BTN_UNDO 13
+#define PIN_BTN_ADJDN 5
+#define PIN_BTN_ADJUP 6
+#define PIN_BTN_UNDO 7
 
 // MIDI constants
 #define MID_VEL_DEFAULT 64
