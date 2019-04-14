@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <MIDI.h>
-#include <LdAdj.h>
 #include <LdConst.h>
 #include <LdMidi.h>
 
@@ -22,8 +21,8 @@ void LdMidi::sendAdjustment(int num, int val) {
     MIDI.sendControlChange(num, val, MID_CHAN_ADJ);
 };
 
-void LdMidi::sendNote(int chan) {
-    MIDI.sendNoteOn(MID_NOTE_DEFAULT, MID_VEL_DEFAULT, chan);
+void LdMidi::sendNote(int chan, int note) {
+    MIDI.sendNoteOn(note, MID_VEL_DEFAULT, chan);
     delay(NOTE_OFF_DELAY);
-    MIDI.sendNoteOff(MID_NOTE_DEFAULT, MID_VEL_DEFAULT, chan);
+    MIDI.sendNoteOff(note, MID_VEL_DEFAULT, chan);
 };

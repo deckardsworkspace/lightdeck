@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include <Bounce2.h>
-#include <LdConst.h>
 #include <LdBtn.h>
+#include <LdConst.h>
 
 LdBtn::LdBtn(int pin) {
     _debouncer = Bounce();

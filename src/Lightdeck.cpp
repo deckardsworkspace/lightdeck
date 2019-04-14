@@ -1,29 +1,37 @@
 /**
- * @file      Lightdeck.ino
- * @brief     yes
+ * @file      Lightdeck.cpp
+ * @brief     Main Lightdeck sketch file (contains setup() and loop())
  * @author    Jared Dantis, 2019
  * @author    Ben Trew, 2018
  * @copyright GPLv3 (see README.md and LICENSE)
  */
 
+#include <Arduino.h>
 #include <LdAdj.h>
+#include <LdBtn.h>
 #include <LdConst.h>
 #include <LdMidi.h>
-#include <LdBtn.h>
 #include <Rotary.h>
+
+/**
+ * Functions
+ */
+void onEncoderRotate();
+void onEncoderReset();
 
 /**
  * Objects
  */
-LdAdj adj;                     ///< Adjustment values
-LdMidi mid;                      ///< MIDI
+LdAdj adj;                       ///< Adjustment matrix
+LdMidi mid;                      ///< MIDI communication
 
 /**
  * Buttons
  */
-LdBtn nextAdjBtn(PIN_BTN_ADJUP); ///< Adjustment selection button 1
-LdBtn prevAdjBtn(PIN_BTN_ADJDN); ///< Adjustment selection button 2
-LdBtn undoBtn(PIN_BTN_UNDO);     ///< Undo adjustment button
+LdBtn prevBtn(PIN_BTN_PREV);     ///< Prev photo button
+LdBtn nextBtn(PIN_BTN_NEXT);     ///< Next photo button
+LdBtn flagBtn(PIN_BTN_FLAG);     ///< Flag photo button
+LdBtn undoBtn(PIN_BTN_UNDO);     ///< Undo button
 
 /**
  * Rotary encoder
@@ -41,11 +49,15 @@ void setup() {
 }
 
 void loop() {
+    // Current adjustment
+    adj.update();
+
     // Buttons
+    if (prevBtn.pressed()) mid.sendNote(MID_CHAN_PREV, MID_NOTE_ADJRESET);
+    if (nextBtn.pressed()) mid.sendNote(MID_CHAN_NEXT, MID_NOTE_ADJRESET);
+    if (flagBtn.pressed()) mid.sendNote(MID_CHAN_FLAG, MID_NOTE_ADJRESET);
+    if (undoBtn.pressed()) mid.sendNote(MID_CHAN_UNDO, MID_NOTE_ADJRESET);
     if (encReset.pressed()) onEncoderReset();
-    if (prevAdjBtn.pressed()) adj.prevAdj();
-    if (nextAdjBtn.pressed()) adj.nextAdj();
-    if (undoBtn.pressed()) mid.sendNote(MID_CHAN_UNDO);
 }
 
 void onEncoderRotate() {
@@ -60,5 +72,5 @@ void onEncoderRotate() {
 
 void onEncoderReset() {
     int num = adj.getNum();
-    mid.sendNote(num + 2);
+    mid.sendNote(num + 2, MID_NOTE_ENCRESET);
 }

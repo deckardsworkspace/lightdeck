@@ -9,7 +9,7 @@ public:
     void begin();
     void read();
     void sendAdjustment(int, int);
-    void sendNote(int);
+    void sendNote(int, int);
 };
 
 #endif

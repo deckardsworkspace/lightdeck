@@ -2,23 +2,17 @@
 #define LD_ADJ_H
 
 #include <Arduino.h>
-
-// Possible adjustments
-extern String ADJ[];
-extern int ADJ_LEN;
+#include <LdBtn.h>
 
 class LdAdj {
 public:
     LdAdj();
     int getNum();
-    String getNextStr();
-    String getPrevStr();
-    String getString();
-    void prevAdj();
-    void nextAdj();
+    void update();
 
 private:
     int _choice;
+    LdBtn* _btns;
 };
 
 #endif

@@ -1,55 +1,22 @@
 #include <Arduino.h>
 #include <LdAdj.h>
+#include <LdBtn.h>
 #include <LdConst.h>
-
-String ADJ[] = {
-    // Must not exceed 14 characters
-    "Exposure",
-    "Contrast",
-    "Highlights",
-    "Shadows",
-    "Whites",
-    "Blacks",
-    "Clarity",
-    "Dehaze",
-    "Vibrance",
-    "Saturation"
-};
-
-int ADJ_LEN = sizeof(ADJ) / sizeof(ADJ[0]);
 
 LdAdj::LdAdj() {
     _choice = 0;
-};
 
-String LdAdj::getString() {
-    return ADJ[_choice];
-};
-
-String LdAdj::getNextStr() {
-    if (_choice == ADJ_LEN - 1)
-        return ADJ[0].substring(0, 4);
-    return ADJ[_choice + 1].substring(0, 4);
-};
-
-String LdAdj::getPrevStr() {
-    if (_choice == 0)
-        return ADJ[ADJ_LEN - 1].substring(0, 4);
-    return ADJ[_choice - 1].substring(0, 4);
+    // Init button objects
+    _btns = new LdBtn[ADJ_NUM] {11, 9, 7, 5, 12, 10, 8, 6};
 };
 
 int LdAdj::getNum() {
     return _choice;
 };
 
-void LdAdj::prevAdj() {
-    _choice--;
-    if (_choice < 0)
-        _choice = ADJ_LEN - 1;
-};
-
-void LdAdj::nextAdj() {
-    _choice++;
-    if (_choice >= ADJ_LEN)
-        _choice = 0;
+void LdAdj::update() {
+    for (int i = 0; i < ADJ_NUM; i++) {
+        if (_btns[i].pressed())
+            _choice = i;
+    }
 };
