@@ -11,6 +11,7 @@ protected:
 public:
     LdBtn(int);
     bool pressed();
+    void pressed(void(*onPress)(void), void(*onHold)(void));
 };
 
 #endif

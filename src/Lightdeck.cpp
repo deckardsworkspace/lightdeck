@@ -18,6 +18,8 @@
  */
 void onEncoderRotate();
 void onEncoderReset();
+void onUndoHeld();
+void onUndoPressed();
 
 /**
  * Objects
@@ -53,10 +55,10 @@ void loop() {
     adj.update();
 
     // Buttons
-    if (prevBtn.pressed()) mid.sendNote(MID_CHAN_PREV, MID_NOTE_ADJRESET);
-    if (nextBtn.pressed()) mid.sendNote(MID_CHAN_NEXT, MID_NOTE_ADJRESET);
-    if (flagBtn.pressed()) mid.sendNote(MID_CHAN_FLAG, MID_NOTE_ADJRESET);
-    if (undoBtn.pressed()) mid.sendNote(MID_CHAN_UNDO, MID_NOTE_ADJRESET);
+    undoBtn.pressed(onUndoPressed, onUndoHeld);
+    if (prevBtn.pressed()) mid.sendNote(MID_CHAN_PREV, MID_NOTE_DEFAULT);
+    if (nextBtn.pressed()) mid.sendNote(MID_CHAN_NEXT, MID_NOTE_DEFAULT);
+    if (flagBtn.pressed()) mid.sendNote(MID_CHAN_FLAG, MID_NOTE_DEFAULT);
     if (encReset.pressed()) onEncoderReset();
 }
 
@@ -73,4 +75,12 @@ void onEncoderRotate() {
 void onEncoderReset() {
     int num = adj.getNum();
     mid.sendNote(num + 2, MID_NOTE_ENCRESET);
+}
+
+void onUndoPressed() {
+    mid.sendNote(MID_CHAN_UNDO, MID_NOTE_DEFAULT);
+}
+
+void onUndoHeld() {
+    mid.sendNote(MID_CHAN_RESET, MID_NOTE_DEFAULT);
 }

@@ -32,8 +32,8 @@
 
 // MIDI constants
 #define MID_VEL_DEFAULT   64
+#define MID_NOTE_DEFAULT  64
 #define MID_NOTE_ENCRESET 127
-#define MID_NOTE_ADJRESET 64
 
 // MIDI channels
 #define MID_CHAN_ADJ     1
@@ -41,6 +41,7 @@
 #define MID_CHAN_NEXT    3
 #define MID_CHAN_FLAG    4
 #define MID_CHAN_UNDO    5
+#define MID_CHAN_RESET   6
 
 
 /**
