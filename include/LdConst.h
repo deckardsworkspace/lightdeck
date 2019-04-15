@@ -16,9 +16,6 @@
 // Time to wait before activating a button hold event
 #define HOLD_DELAY       500
 
-// Interval between repeats from a held button
-#define HOLD_INTERVAL    50
-
 // Time to wait before sending a NoteOff
 #define NOTE_OFF_DELAY   100
 

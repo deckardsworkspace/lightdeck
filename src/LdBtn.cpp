@@ -7,6 +7,7 @@ LdBtn::LdBtn(int pin) {
     _debouncer = Bounce();
     _debouncer.attach(pin, INPUT_PULLUP);
     _debouncer.interval(DEBOUNCE_INTERVAL);
+    _onHoldFired = false;
 };
 
 bool LdBtn::pressed() {
@@ -19,9 +20,13 @@ void LdBtn::pressed(void(*onPress)(void), void(*onHold)(void)) {
     bool isHeld = _debouncer.read() == LOW && _debouncer.duration() > HOLD_DELAY;
     if (_debouncer.fell() || isHeld) {
         if (isHeld) {
-            onHold();
-            delay(HOLD_INTERVAL);
-        } else
+            if (!_onHoldFired) {
+                onHold();
+                _onHoldFired = true;
+            }
+        } else {
             onPress();
+            _onHoldFired = false;
+        }
     }
 };
