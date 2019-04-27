@@ -12,10 +12,6 @@ Lightdeck depends on a few pieces of software to make the magic happen:
 - [LoopMIDI for Windows](https://www.tobias-erichsen.de/software/loopmidi.html) to route MIDI messages from Hairless-MIDIserial to MIDI2LR (use the built-in Audio MIDI Setup app on macOS)
 - [MIDI2LR](https://rsjaffe.github.io/MIDI2LR/) to convert MIDI messages to Lightroom commands
 
-## Setup
-
-(TODO)
-
 ## License
 
 Lightdeck - the poor man's Loupedeck
